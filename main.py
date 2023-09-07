@@ -9,7 +9,6 @@ from goto import with_goto # GOTO跳转
 import time # 休眠
 
 Vanilla_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Vanilla.json"
-Fabric_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Fabric.json"
 Forge_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Forge.json"
 Paper_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Paper.json"
 
@@ -53,6 +52,7 @@ Forge_link_data = json.load(Forge_link_data_loda)
 
 os.system("cls")
 print()
+print("请先安装JAVA再运行本脚本")
 print("1. 原版")
 print("2. Fabric")
 print("3. Forge")
@@ -63,15 +63,36 @@ if ClassInput == "1" :
     os.system("cls")
     print()
     VanillaVersion = input("请输入你要开服的版本号 例如1.7.10: ")
+    FileVanillaVersion = VanillaVersion + ".jar"
+    print()
+    print("正在下载服务器文件 请稍后")
+    wget.download(Vanilla_link_data[VanillaVersion],out=FileVanillaVersion)
+    
 elif ClassInput == "2" :
     os.system("cls")
     print()
     FabricVersion = input("请输入你要开服的版本号 例如1.7.10: ")
+    FileFabricVersion = FabricVersion + ".jar"
+    print()
+    print("正在下载服务器文件 请稍后")
+    wget.download("https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.11.2/fabric-installer-0.11.2.jar",out="installer.jar")
+    FabricInstall = "java -jar installer.jar server -mcversion " + FabricVersion + " -downloadMinecraft"
+    os.system("FabricInstall")
+
 elif ClassInput == "3" :
     os.system("cls")
     print()
     ForgeVersion = input("请输入你要开服的版本号 例如1.7.10: ")
+    FileForgeVersion = ForgeVersion + ".jar"
+    print()
+    print("正在下载服务器文件 请稍后")
+    wget.download(Forge_link_data[ForgeVersion],out="Forge.zip")
+
 elif ClassInput == "4" :
     os.system("cls")
     print()
     PaperVersion = input("请输入你要开服的版本号 例如1.7.10: ")
+    FilePaperVersion = PaperVersion + ".jar"
+    print()
+    print("正在下载服务器文件 请稍后")
+    wget.download(Paper_link_data[PaperVersion],out=FilePaperVersion)
