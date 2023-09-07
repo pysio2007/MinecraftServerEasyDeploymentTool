@@ -8,14 +8,47 @@ from dominate.tags import label
 from goto import with_goto # GOTO跳转
 import time # 休眠
 
+Vanilla_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Vanilla.json"
+Fabric_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Fabric.json"
+Forge_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Forge.json"
+Paper_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Paper.json"
+
 
 os.system("cls")
 print("MineCraft 简易服务器部署工具V0.1")
-Vanilla_DATA_URL= ""
-Fabric_DATA_URL= ""
-Forge_DATA_URL= ""
-Paper_DATA_URL= ""
+print("正在下载最新服务端下载地址")
 
+Vanillaf = open("Vanilla.json", "w")
+Vanillaf.write("Woops! 请完整运行下载器")
+Vanillaf.close()
+os.remove("Vanilla.json")
+wget.download(Vanilla_DATA_URL, out="Vanilla.json")
+Vanilla_link_data_loda = open("Vanilla.json")
+Vanilla_link_data = json.load(Vanilla_link_data_loda) 
+
+Fabricf = open("Fabric.json", "w")
+Fabricf.write("Woops! 请完整运行下载器")
+Fabricf.close()
+os.remove("Fabric.json")
+wget.download(Fabric_DATA_URL, out="Fabric.json")
+Fabric_link_data_loda = open("list.json")
+Fabric_link_data = json.load(Fabric_link_data_loda) 
+
+Paperf = open("Paper.json", "w")
+Paperf.write("Woops! 请完整运行下载器")
+Paperf.close()
+os.remove("Paper.json")
+wget.download(Paper_DATA_URL, out="Paper.json")
+Paper_link_data_loda = open("list.json")
+Paper_link_data = json.load(Paper_link_data_loda) 
+
+Forgef = open("Forge.json", "w")
+Forgef.write("Woops! 请完整运行下载器")
+Forgef.close()
+os.remove("Forge.json")
+wget.download(Forge_DATA_URL, out="Forge.json")
+Forge_link_data_loda = open("list.json")
+Forge_link_data = json.load(Forge_link_data_loda) 
 
 
 os.system("cls")
