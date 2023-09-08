@@ -8,7 +8,7 @@ from dominate.tags import label
 from goto import with_goto # GOTO跳转
 import time # 休眠
 
-Vanilla_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Vanilla.json"
+Vanilla_DATA_URL= "https://file.pysio.online/d/MineCraft/ServerCord/Vanilla/"
 Forge_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Forge.json"
 Paper_DATA_URL= "https://cdn.jsdelivr.net/gh/pysio2007/MinecraftServerEasyDeploymentTool/Version/Paper.json"
 
@@ -17,28 +17,12 @@ os.system("cls")
 print("MineCraft 简易服务器部署工具V0.1")
 print("正在下载最新服务端下载地址")
 
-Vanillaf = open("Vanilla.json", "w")
-Vanillaf.write("Woops! 请完整运行下载器")
-Vanillaf.close()
-os.remove("Vanilla.json")
-wget.download(Vanilla_DATA_URL, out="Vanilla.json")
-Vanilla_link_data_loda = open("Vanilla.json")
-Vanilla_link_data = json.load(Vanilla_link_data_loda) 
-
-Fabricf = open("Fabric.json", "w")
-Fabricf.write("Woops! 请完整运行下载器")
-Fabricf.close()
-os.remove("Fabric.json")
-wget.download(Fabric_DATA_URL, out="Fabric.json")
-Fabric_link_data_loda = open("list.json")
-Fabric_link_data = json.load(Fabric_link_data_loda) 
-
 Paperf = open("Paper.json", "w")
 Paperf.write("Woops! 请完整运行下载器")
 Paperf.close()
 os.remove("Paper.json")
 wget.download(Paper_DATA_URL, out="Paper.json")
-Paper_link_data_loda = open("list.json")
+Paper_link_data_loda = open("Paper.json")
 Paper_link_data = json.load(Paper_link_data_loda) 
 
 Forgef = open("Forge.json", "w")
@@ -46,7 +30,7 @@ Forgef.write("Woops! 请完整运行下载器")
 Forgef.close()
 os.remove("Forge.json")
 wget.download(Forge_DATA_URL, out="Forge.json")
-Forge_link_data_loda = open("list.json")
+Forge_link_data_loda = open("Forge.json")
 Forge_link_data = json.load(Forge_link_data_loda) 
 
 
@@ -66,18 +50,29 @@ if ClassInput == "1" :
     FileVanillaVersion = VanillaVersion + ".jar"
     print()
     print("正在下载服务器文件 请稍后")
-    wget.download(Vanilla_link_data[VanillaVersion],out=FileVanillaVersion)
+    Vanilla_link_data = Vanilla_DATA_URL + FileVanillaVersion
+    wget.download(Vanilla_link_data,out=FileVanillaVersion)
+    print()
+    print("下载完毕 使用java -jar " + FileVanillaVersion + "启动服务器")        #原版部分
     
 elif ClassInput == "2" :
     os.system("cls")
     print()
-    FabricVersion = input("请输入你要开服的版本号 例如1.7.10: ")
+    FabricVersion = input("请输入你要开服的版本号 例如1.20.1: ")
     FileFabricVersion = FabricVersion + ".jar"
     print()
-    print("正在下载服务器文件 请稍后")
+    print("正在下载Fabric安装文件 请稍后")
     wget.download("https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.11.2/fabric-installer-0.11.2.jar",out="installer.jar")
-    FabricInstall = "java -jar installer.jar server -mcversion " + FabricVersion + " -downloadMinecraft"
-    os.system("FabricInstall")
+    FabricInstall = "java -jar installer.jar server -mcversion " + FabricVersion + " -downloadMinecraft "
+    print()
+    print("正在执行安装Fabric服务器")
+    Fabric_link_data = Vanilla_DATA_URL + FileFabricVersion
+    os.system(FabricInstall)
+    print()
+    print("正在清理安装文件")
+    os.remove("installer.jar")
+    print()
+    print("安装完成")            #Fabric部分
 
 elif ClassInput == "3" :
     os.system("cls")
